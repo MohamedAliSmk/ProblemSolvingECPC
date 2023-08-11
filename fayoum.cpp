@@ -6,7 +6,6 @@
 #include <vector>
 using namespace std;
 
-
 int main() {
     int T;
     cin >> T;
@@ -14,7 +13,7 @@ int main() {
     if (T < 1 || T > 1000) {
         return 1;
     }
-    vector <int> A(i);
+
     for (int t = 0; t < T; ++t) {
         int N;
         cin >> N;
@@ -22,28 +21,33 @@ int main() {
         if (N < 1 || N > 1000000) {
             return 1;
         }
-        cnt_one=0;
-        cnt_neg_one=0;
-        cnt_zero=0;
 
-        for (int i =0 ; i<N ;++i){
-        cin >> A(i);
-        A.sort(A.begin(),A.end())
-        cnt_one=A.count(1);
-        cnt_neg_one=A.count(-1);
-        cnt_zero=A.count(0);
-
-        if (cnt_zero % 2 != 0){
-            cnt_one+=1;
-        }
-
-        if(cnt_one>cnt_neg_one){
-                cout<<"Chess";
-            }else if(cnt_one < cnt_neg_one) {
-                cout<<"Lol";
-            }else{
-                cout<<"Go deploying";
+        vector<int> A(N);
+        int cnt_one = 0;
+        int cnt_neg_one = 0;
+        int cnt_zero = 0;
+        
+        for (int i = 0; i < N; ++i) {
+            cin >> A[i];
+            if (A[i] == 1) {
+                cnt_one++;
+            } else if (A[i] == -1) {
+                cnt_neg_one++;
+            } else if (A[i] == 0) {
+                cnt_zero++;
             }
+        }
+        if (cnt_zero % 2 != 0) {
+                cnt_one++;
+                }
+        cout<<"cnt_zero: "<<cnt_zero<<endl<<"cnt_one: "<<cnt_one<<endl<<"cnt_neg_one: "<<cnt_neg_one<<endl;
+
+        if (cnt_one > cnt_neg_one) {
+            cout << "Chess" << endl;
+        } else if (cnt_one < cnt_neg_one) {
+            cout << "Lol" << endl;
+        } else {
+            cout << "Go deploying" << endl;
         }
     }
 
