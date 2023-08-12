@@ -25,14 +25,15 @@ int main() {
         }
 
         vector<int> A(N);
+ 
         for (int i = 0; i < N; ++i) {
             cin >> A[i];
             ++freq[A[i]];
         }
     
         int Maxk = 0;
-        int mink = 0; // Corrected variable initialization
-
+        int mink = 0; 
+        
         for (int i = 0; i < N; ++i) {
             Maxk = max(Maxk, freq[A[i]]);
             mink = min(mink, freq[A[i]]);
